@@ -19,6 +19,9 @@ DROP TABLE IF EXISTS CruiseReservation CASCADE;
 DROP TABLE IF EXISTS CruiseCrew CASCADE;
 DROP TABLE IF EXISTS Works CASCADE;
 
+CREATE TABLE Cruise(cnum INT NOT NULL, cost INT NOT NULL, num_sold INT NOT NULL, num_stops INT NOT NULL, actual_arrive_date CHAR[10], actual_arrive_time CHAR[10], actual_depart_date CHAR[10], actual_depart_time CHAR[10], source CHAR[10], destination CHAR[10],
+PRIMARY KEY (cnum));
+
 CREATE TABLE Schedule(cnum INT NOT NULL, day CHAR[10], depart_time CHAR[10], arrive_time CHAR[10], 
 PRIMARY KEY (cnum), 
 FOREIGN KEY(cnum) REFERENCES Cruise(cnum) ON DELETE CASCADE);
@@ -41,9 +44,6 @@ CREATE TABLE Crew(name CHAR[10], ID INT NOT NULL,
 PRIMARY KEY (ID));
 
 CREATE TABLE Schedule(cnum INT NOT NULL, day CHAR[10], depart_time CHAR[10], arrive_time CHAR[10],
-PRIMARY KEY (cnum));
-
-CREATE TABLE Cruise(cnum INT NOT NULL, cost INT NOT NULL, num_sold INT NOT NULL, num_stops INT NOT NULL, actual_arrive_date CHAR[10], actual_arrive_time CHAR[10], actual_depart_date CHAR[10], actual_depart_time CHAR[10], source CHAR[10], destination CHAR[10],
 PRIMARY KEY (cnum));
 
 CREATE TABLE Works(wnum INT NOT NULL, wID INT NOT NULL,
